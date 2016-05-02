@@ -284,7 +284,6 @@ int main(int argc, char **argv) {
     ros::NodeHandle nh_ns("~");
 
     // Get parameters from launch file
-    double
     nh_ns.getParam("resolution", resolution);
     nh_ns.getParam("quality", quality);
     nh_ns.getParam("sensing_mode", sensing_mode);
