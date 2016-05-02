@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.7)
 
-project(zed_wrapper)
+project(zed_ros_wrapper)
 
 ###############################################################################
 ## Options
