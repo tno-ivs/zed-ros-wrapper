@@ -46,7 +46,7 @@
 #include <sensor_msgs/image_encodings.h>
 #include <image_transport/image_transport.h>
 #include <dynamic_reconfigure/server.h>
-#include <zed_wrapper/ZedConfig.h>
+#include <zed_ros_wrapper/ZedConfig.h>
 
 
 //opencv includes
