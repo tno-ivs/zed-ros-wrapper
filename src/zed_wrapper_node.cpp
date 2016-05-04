@@ -248,7 +248,6 @@ int main(int argc, char **argv) {
     int quality = sl::zed::MODE::PERFORMANCE;
     int sensing_mode = sl::zed::SENSING_MODE::RAW;
     int rate = 30;
-    double max_range_m = 20; // default value for maximum depth in m
 
     std::string img_topic = "image_rect";
 
@@ -288,7 +287,6 @@ int main(int argc, char **argv) {
     nh_ns.getParam("quality", quality);
     nh_ns.getParam("sensing_mode", sensing_mode);
     nh_ns.getParam("frame_rate", rate);
-    nh_ns.getParam("max_range", max_range_m);
 
     nh_ns.getParam("rgb_topic", rgb_topic);
     nh_ns.getParam("rgb_cam_info_topic", rgb_cam_info_topic);
@@ -334,17 +332,6 @@ int main(int argc, char **argv) {
     f = boost::bind(&callback, _1, _2);
     server.setCallback(f);
     confidence = 80;
-    
-    // Set the maximum range of the ZED camera (TNO addition)
-    if (max_range_m > 1.0)
-    {
-		// Distance must be provided in mm
-		zed->setDepthClampValue(max_range_m*1000);
-	}
-	else
-	{
-		ROS_WARN("You have set the max disparity range for the ZED camera to %f m, ignoring this low value", max_range_m);
-	}
 
     // Get the parameters of the ZED images
     int width = zed->getImageSize().width;
